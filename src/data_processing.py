@@ -1,50 +1,38 @@
-# --- Original notebook code cell 1 ---
-from google.colab import files
-uploaded = files.upload()
-
-# --- Original notebook code cell 2 ---
+from pathlib import Path
 import pandas as pd
-import numpy as np
 
-df = pd.read_csv('Dataset.csv')
-df
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+INPUT_PATH = PROJECT_ROOT / "data" / "raw" / "RTA Dataset.csv"
+OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "RTA Dataset cleaned.csv"
+
+# Define columns to drop due to high missing values
+COLUMNS_TO_DROP = [
+    "Time",
+    "Defect_of_vehicle",
+    "Service_year_of_vehicle",
+    "Fitness_of_casuality",
+    "Work_of_casuality",
+]
 
 
-# --- Original notebook code cell 3 ---
-df.info()
+def load_and_clean_data() -> pd.DataFrame:
+    df = pd.read_csv(INPUT_PATH)
 
-# --- Original notebook code cell 4 ---
-df.isnull().sum() # เช็ค null
+    # Remove columns with many missing values
+    df = df.drop(columns=COLUMNS_TO_DROP, errors="ignore")
 
-# --- Original notebook code cell 5 ---
-#ลบคอลัมล์'Defect_of_vehicle', 'Service_year_of_vehicle', 'Fitness_of_casuality', 'Work_of_casuality' เพราะ
-# มีnullมากซึ่งถ้าทำการลบmissingโดยไม่ลบออก จะทำให้ข้อมูลหายไปเกือบหมดเหลือประมาณ 2800โดยประมาณ
-df.drop(df[['Time', 'Defect_of_vehicle', 'Service_year_of_vehicle', 'Fitness_of_casuality', 'Work_of_casuality']],axis=1,inplace=True)
+    # Remove remaining rows with missing values
+    df = df.dropna().reset_index(drop=True)
 
-# --- Original notebook code cell 7 ---
-df.isnull().sum()
+    return df
 
-# --- Original notebook code cell 8 ---
-df.dropna(inplace=True)
 
-# --- Original notebook code cell 9 ---
-df.info()
+def save_cleaned_data(df: pd.DataFrame) -> None:
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(OUTPUT_PATH, index=False)
 
-# --- Original notebook code cell 10 ---
-df.isnull().sum()
 
-# --- Original notebook code cell 11 ---
-df
-
-# --- Original notebook code cell 12 ---
-from google.colab import drive
-drive.mount('/content/drive')
-
-# --- Original notebook code cell 13 ---
-file_path = '/content/drive/MyDrive/my_data.xlsx'
-
-# --- Original notebook code cell 14 ---
-# save
-df.to_excel(file_path, index=False)
-
-print("บันทึกเรียบร้อย!")
+if __name__ == "__main__":
+    cleaned_df = load_and_clean_data()
+    save_cleaned_data(cleaned_df)
+    print(f"Saved cleaned data to: {OUTPUT_PATH}")

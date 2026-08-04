@@ -1,50 +1,34 @@
-# --- Original notebook code cell 6 ---
-numerical_cols = df.select_dtypes(include=['int64', 'float64']).columns
-categorical_cols = df.select_dtypes(include=['object', 'category']).columns
+"""Encode categorical variables in the cleaned accident-severity dataset."""
 
-print("Numerical variables:")
-print(numerical_cols)
-
-print("\nCategorical variables:")
-print(categorical_cols)
-
-# --- Original notebook code cell 15 ---
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-
-for column in df.columns:
-    if df[column].dtype == 'object' and column != 'Accident_severity':
-        df[column] = le.fit_transform(df[column])
-
-df['Accident_severity'] = le.fit_transform(df['Accident_severity'])
-# encoding จากข้อความเป็นตัวเลข
-
-# --- Original notebook code cell 17 ---
-df['Accident_severity'].value_counts()
-
-# --- Original notebook code cell 24 ---
-from sklearn.ensemble import RandomForestClassifier
+from pathlib import Path
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
-# สมมติว่า X = features, y = target
-# และ train model เรียบร้อยแล้ว
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+INPUT_PATH = PROJECT_ROOT / "data" / "processed" / "RTA Dataset cleaned.csv"
+OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "RTA Dataset encoded.csv"
 
-model = RandomForestClassifier(random_state=42)
-model.fit(X, y)
 
-# ดึงค่า importance
-importances = model.feature_importances_
+def encode_categorical_features() -> pd.DataFrame:
+    """Load cleaned data, encode text columns, and return the result."""
+    df = pd.read_csv(INPUT_PATH)
+    categorical_columns = df.select_dtypes(
+        include=["object", "category"]
+    ).columns
 
-# สร้าง DataFrame
-feature_importance_df = pd.DataFrame({
-    'Feature': X.columns,
-    'Importance': importances
-})
+    for column in categorical_columns:
+        encoder = LabelEncoder()
+        df[column] = encoder.fit_transform(df[column])
 
-# เรียงจากมากไปน้อย
-feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False)
+    return df
 
-# แสดง 5 อันดับแรก
-top5 = feature_importance_df.head(5)
 
-print(top5)
+def save_encoded_data(df: pd.DataFrame) -> None:
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(OUTPUT_PATH, index=False)
+
+
+if __name__ == "__main__":
+    encoded_df = encode_categorical_features()
+    save_encoded_data(encoded_df)
+    print(f"Saved encoded data to: {OUTPUT_PATH}")
