@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *.so
 .pytest_cache/
+.coverage
+htmlcov/
 
 # Virtual environments
 .venv/
@@ -22,3 +24,6 @@ reports/figures/
 .DS_Store
 .vscode/
 .idea/
+
+# Private presentation notes
+docs/presentation-notes.md

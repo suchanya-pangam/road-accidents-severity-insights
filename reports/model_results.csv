@@ -1,1 +1,1 @@
-model,sampling_method,folds,accuracy,precision_weighted,recall_weighted,f1_weighted,notes
+model,sampling_method,mean_accuracy,mean_weighted_f1_score,mean_macro_f1_score,final_test_accuracy,final_test_macro_f1_score,notes

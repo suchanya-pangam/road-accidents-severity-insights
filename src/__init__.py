@@ -1,1 +1,1 @@
-"""Road accident severity prediction package."""
+"""Road accident analysis package."""

@@ -7,3 +7,4 @@ xgboost>=2.0
 matplotlib>=3.7
 seaborn>=0.13
 jupyter>=1.0
+pytest>=8.0
