@@ -1,16 +1,23 @@
-# Road Accident Severity Dashboard
+# Road Accident Severity Prediction and Dashboard
 
-This project analyses road-accident data through an interactive dashboard. It is structured for a third-year university data-analysis project and presents patterns in accident severity, road conditions, vehicle types, driver characteristics, and casualties.
+This academic Data Science project combines exploratory data analysis, an interactive Power BI dashboard, and machine learning experiments to study factors associated with road accident severity. It examines patterns in road conditions, vehicle types, driver characteristics, and casualties, then compares classification models for severity prediction.
 
-## Project layout
+## Project Highlights
 
-- `notebooks/notebook.ipynb` — the primary record of exploratory analysis.
-- `src/data_processing.py` — loading, cleaning, and exporting the dataset.
-- `src/feature_engineering.py` — categorical encoding and preparation of analysis fields.
-- `src/visualization.py` — correlation and dashboard-supporting visualisations.
-- `src/model_training.py` and `src/models/` — archived notebook-derived scripts; they are not part of the dashboard project scope.
-- `tests/` — automated tests for preprocessing and feature engineering.
-- `reports/model_results.csv` — header-only template for recorded model results.
+- Cleaned and analyzed more than 12,000 road accident records.
+- Built an interactive Power BI dashboard for exploring accident-severity patterns and related factors.
+- Compared Decision Tree, XGBoost, and Random Forest models using Random Under-Sampling, Random Over-Sampling, and SMOTE.
+- Random Forest with Random Over-Sampling achieved 84.80% accuracy, 84.80% recall, and an F1-score of 79.67%.
+
+## Project Layout
+
+- `notebooks/notebook.ipynb` - Primary record of exploratory analysis and model experiments.
+- `src/data_processing.py` - Loads, cleans, and exports the dataset.
+- `src/feature_engineering.py` - Encodes categorical variables and prepares analysis fields.
+- `src/visualization.py` - Creates correlation and dashboard-supporting visualizations.
+- `src/model_training.py` and `src/models/` - Defines and evaluates the machine learning models.
+- `tests/` - Automated tests for preprocessing and feature engineering.
+- `reports/model_results.csv` - Template for recording model results.
 
 ## Setup
 
@@ -23,32 +30,28 @@ jupyter notebook notebooks/notebook.ipynb
 
 ## Data
 
-Place the original dataset at `data/raw/RTA Dataset.csv`. The project uses the [Road Accidents Severity Prediction Kaggle notebook](https://www.kaggle.com/code/kanuriviveknag/road-accidents-severity-prediction) by `kanuriviveknag` as its dataset reference. The raw and processed data directories are ignored by Git because the dataset may be subject to redistribution restrictions.
+Place the original dataset at `data/raw/RTA Dataset.csv`.
 
-## Project scope
-
-This project focuses on exploratory data analysis and dashboard development. It does not present or evaluate a predictive model. The dashboard helps users explore patterns in accident severity, road conditions, vehicle types, driver characteristics, and casualty information.
+The project uses the [Road Accidents Severity Prediction Kaggle notebook](https://www.kaggle.com/code/kanuriviveknag/road-accidents-severity-prediction) as its dataset reference. The raw and processed data directories are ignored by Git because the dataset may be subject to redistribution restrictions.
 
 ## Workflow
 
 1. Clean the dataset by removing selected columns with extensive missing data and dropping remaining incomplete rows.
-2. Prepare the data for analysis by encoding categorical variables where necessary.
+2. Prepare categorical features for analysis and modeling.
 3. Explore accident-severity patterns and relationships between relevant variables.
-4. Present the findings through an interactive dashboard designed for clear and accessible analysis.
+4. Compare Decision Tree, XGBoost, and Random Forest models with different resampling methods.
+5. Present findings through an interactive dashboard for clear and accessible analysis.
 
-## Live dashboard
+## Model Evaluation
+
+The model experiments use a stratified 80:20 train-test split and evaluate Decision Tree, XGBoost, and Random Forest classifiers. Random Under-Sampling, Random Over-Sampling, and SMOTE are used to address class imbalance.
+
+Random Forest with Random Over-Sampling was selected for the reported result because it achieved 84.80% accuracy and recall, with an F1-score of 79.67%. The modeling work is an academic experiment and is not presented as a deployed prediction system.
+
+Methodology details are available in [`docs/modeling-methodology.md`](docs/modeling-methodology.md).
+
+## Live Dashboard
 
 Explore the interactive Power BI dashboard here: [Road Accident Severity Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMDRiOWEwNGUtYmNiNC00NzUzLWFkOWYtZDAxOTMzOTkwNjQ5IiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D).
 
-The dashboard is the project’s main deliverable. It supports interactive exploration of accident-severity patterns, road conditions, vehicle types, driver characteristics, and casualty information.
-
-## Methodology evidence
-
-The modelling appendix and its research-supported parameter-search approach are documented in [`docs/modeling-methodology.md`](docs/modeling-methodology.md).
-
-## Dashboard capabilities
-
-- Explore the distribution of accident-severity levels.
-- Examine relationships between severity, road conditions, vehicle types, and driver characteristics.
-- Filter data interactively to investigate specific accident patterns.
-- Support clear, evidence-based discussion of road-safety insights.
+The dashboard supports interactive exploration of accident-severity patterns, road conditions, vehicle types, driver characteristics, and casualty information.
