@@ -18,7 +18,7 @@ env/
 data/raw/
 data/processed/
 models/
-reports/figures/
+reports/figures/*
 
 # Operating system and editor files
 .DS_Store
@@ -29,6 +29,4 @@ reports/figures/
 docs/presentation-notes.md
 
 # Keep the public XGBoost feature-importance chart used in the README.
-!reports/
-!reports/figures/
 !reports/figures/xgboost_feature_importance.png
