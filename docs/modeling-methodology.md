@@ -1,8 +1,8 @@
-# Experimental Modelling Methodology and Evidence Base
+# Modeling Methodology
 
 ## Scope
 
-The final project deliverable is an interactive Power BI dashboard for exploratory road-accident analysis. The modelling code and notebook experiments are retained as an academic appendix. They are not presented as a deployed prediction system.
+This is an academic project. The main result is the Power BI dashboard, which helps users explore road-accident patterns. The notebook and model code are included to show the analysis and machine-learning experiments behind the project. They are not a deployed prediction system.
 
 ## Reproducibility settings
 
@@ -10,7 +10,7 @@ The final project deliverable is an interactive Power BI dashboard for explorato
 
 ## Evaluation protocol
 
-The notebook uses a stratified 80:20 train-test split. The training portion is evaluated with stratified 10-fold cross-validation, and the test portion remains unseen until final evaluation. Stratification is used because accident-severity classes are imbalanced. Macro F1-score is the primary selection metric because it gives each severity class equal weight.
+The notebook uses a stratified 80:20 train-test split. The training portion is evaluated with stratified 10-fold cross-validation, and the test portion remains unseen until final evaluation. Stratification is used because accident-severity classes are imbalanced. Weighted F1-score is the primary selection metric because it combines precision and recall while reflecting overall performance across the dataset.
 
 SMOTE, random oversampling, and random undersampling are applied only inside training folds. This prevents information from validation or test observations entering the resampling step.
 
@@ -30,13 +30,13 @@ The parameter values below are **search candidates**, not universal best setting
 | `model__gamma` | 0, 0.1, 0.3 | Requires a minimum improvement before splitting. |
 | `model__reg_lambda` | 1, 5, 10 | Applies L2 regularisation. |
 
-The project uses `RandomizedSearchCV` with 12 sampled configurations and stratified 10-fold cross-validation. Random search is an appropriate baseline when several hyperparameters are explored because it can examine more distinct values than grid search under the same computation budget [1]. This reference supports the search strategy; it does not prescribe the value `n_iter=12`. The final setting must be the one that achieves the best mean macro F1-score in this experiment.
+The notebook includes a small XGBoost parameter search for learning purposes. The reproducible baseline recorded in `reports/model_results.csv` compares the models using the settings in `src/model_training.py` and selects the model with the highest mean weighted F1-score.
 
 ## Related road-accident-severity evidence
 
 Chen et al. (2025) studied road-traffic-accident severity prediction with XGBoost. They applied SMOTE to the training set only, used stratified cross-validation during optimisation, and searched XGBoost parameters including `n_estimators`, `max_depth`, `learning_rate`, `subsample`, and `colsample_bytree` [2]. Their reported optimum (`n_estimators=42`, `max_depth=35`, and `learning_rate=0.4643`) is documented for transparency but is **not adopted** here, because their Chinese accident dataset, DART booster, optimisation algorithm, and feature set differ from this project.
 
-This project therefore follows the research-supported procedure rather than copying a reported optimum: use training-only SMOTE, tune relevant XGBoost parameters, apply stratified cross-validation, and choose the configuration using a class-balanced metric. SMOTE itself is an established method for addressing class imbalance by creating synthetic minority examples [3]. XGBoost is a regularised tree-boosting framework designed for scalable supervised learning [4].
+This project uses the research as supporting context instead of copying a reported optimum. The final choice is based on this project's own cross-validation results: XGBoost without resampling had the highest mean weighted F1-score (80.09%). Random Forest with Random Oversampling had the highest mean accuracy (84.94%), and XGBoost with SMOTE had the highest mean macro F1-score (42.55%). SMOTE is included as one way to handle class imbalance, while XGBoost is a tree-boosting method for supervised learning.
 
 ## Limitations
 
