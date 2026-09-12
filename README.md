@@ -7,7 +7,7 @@ This academic Data Science project combines exploratory data analysis, an intera
 - Cleaned and analyzed more than 12,000 road accident records.
 - Built an interactive Power BI dashboard for exploring accident-severity patterns and related factors.
 - Compared Decision Tree, XGBoost, and Random Forest models using Random Under-Sampling, Random Over-Sampling, and SMOTE.
-- Random Forest with Random Over-Sampling achieved 84.80% accuracy, 84.80% recall, and an F1-score of 79.67%.
+- The reproducible baseline compares Decision Tree, XGBoost, and Random Forest with several resampling methods. Detailed cross-validation and held-out test results are in `reports/model_results.csv`.
 
 ## Project Layout
 
@@ -46,7 +46,9 @@ The project uses the [Road Accidents Severity Prediction Kaggle notebook](https:
 
 The model experiments use a stratified 80:20 train-test split and evaluate Decision Tree, XGBoost, and Random Forest classifiers. Random Under-Sampling, Random Over-Sampling, and SMOTE are used to address class imbalance.
 
-Random Forest with Random Over-Sampling was selected for the reported result because it achieved 84.80% accuracy and recall, with an F1-score of 79.67%. The modeling work is an academic experiment and is not presented as a deployed prediction system.
+On the current reproducible baseline run, XGBoost with SMOTE achieved the highest mean macro F1-score during 10-fold cross-validation. Its held-out test accuracy was 73.22% and held-out macro F1-score was 39.23%. The full comparison is recorded in `reports/model_results.csv`.
+
+The modeling work is an academic experiment and is not presented as a deployed prediction system.
 
 Methodology details are available in [`docs/modeling-methodology.md`](docs/modeling-methodology.md).
 

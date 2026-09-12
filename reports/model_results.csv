@@ -1,1 +1,13 @@
 model,sampling_method,mean_accuracy,mean_weighted_f1_score,mean_macro_f1_score,final_test_accuracy,final_test_macro_f1_score,notes
+XGBoost,SMOTE,0.768184,0.768643,0.425533,0.732227,0.392282,Selected by mean macro F1-score; held-out test metrics shown for selected model.
+XGBoost,Random oversampling,0.766997,0.768339,0.425336,,,
+Random Forest,SMOTE,0.787734,0.776926,0.410326,,,
+XGBoost,No sampling,0.843875,0.800855,0.400043,,,
+Random Forest,Random oversampling,0.849357,0.795777,0.395665,,,
+Decision Tree,Random oversampling,0.745665,0.750652,0.386625,,,
+Decision Tree,No sampling,0.736487,0.746650,0.385775,,,
+Decision Tree,SMOTE,0.667902,0.705284,0.377265,,,
+Random Forest,No sampling,0.851282,0.788626,0.324725,,,
+XGBoost,Random undersampling,0.420232,0.512137,0.282451,,,
+Random Forest,Random undersampling,0.420975,0.512345,0.280088,,,
+Decision Tree,Random undersampling,0.391201,0.485854,0.265545,,,
