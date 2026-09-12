@@ -55,7 +55,7 @@ The modeling work is an academic experiment and is not presented as a deployed p
 
 ## From analysis to dashboard
 
-The project connects analysis and communication in three steps. First, EDA finds patterns in road, vehicle, driver, and accident conditions. Second, the Power BI dashboard makes these patterns easier to explore. Third, the model comparison checks whether the variables have useful predictive signal. The selected XGBoost model is then used to calculate gain-based feature importance.
+The project connects analysis and communication in three steps. First, EDA finds patterns in road, vehicle, driver, and accident conditions. Second, the model comparison checks whether the variables have useful predictive signal. The selected XGBoost model is then used to calculate gain-based feature importance. Finally, the Power BI dashboard presents the key findings in a format that is easier to explore.
 
 Feature importance is the main basis for choosing the dashboard's key analysis variables. For example, the number of vehicles involved, light conditions, day of week, and number of casualties are included because they are important to the model's predictions. Other variables, such as vehicle type, driver gender, and cause of accident, are also included to provide more context and help users explore the data more fully. Feature importance supports interpretation of the model; it does not prove that a variable causes accident severity.
 
