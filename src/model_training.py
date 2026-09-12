@@ -66,7 +66,7 @@ def compare_models(data: pd.DataFrame) -> tuple[pd.DataFrame, object, object, tu
 
 
 def train_and_evaluate_selected_model(data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, float]]:
-    """Select a model by macro F1-score and evaluate it on held-out data."""
+    """Select a model by weighted F1-score and evaluate it on held-out data."""
     results, model, sampler, split_data = compare_models(data)
     train_features, test_features, train_target, test_target = split_data
     if sampler is not None:

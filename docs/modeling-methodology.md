@@ -20,6 +20,10 @@ Muktar and Fono (2024) compared XGBoost, CatBoost, Random Forest, and Gradient B
 
 The reproducible baseline recorded in `reports/model_results.csv` selects the model with the highest mean weighted F1-score. XGBoost without resampling achieved the highest mean weighted F1-score (80.09%) and was selected as the final model. Random Forest with Random Oversampling had the highest mean accuracy (84.94%), while XGBoost with SMOTE had the highest mean macro F1-score (42.55%).
 
+## Feature importance
+
+After selecting the XGBoost baseline, gain-based feature importance is calculated from the model fitted on the training split. The top variables were the number of vehicles involved, light conditions, and day of week. This makes the model result easier to connect with the dashboard and EDA findings. Feature importance shows which variables were most useful to this model, not that they directly cause accident severity.
+
 ## Limitations
 
 - Findings from another road-accident dataset support including a model in the comparison, but do not prove that it will be best for this dataset.

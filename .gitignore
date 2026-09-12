@@ -27,3 +27,8 @@ reports/figures/
 
 # Private presentation notes
 docs/presentation-notes.md
+
+# Keep the public XGBoost feature-importance chart used in the README.
+!reports/
+!reports/figures/
+!reports/figures/xgboost_feature_importance.png

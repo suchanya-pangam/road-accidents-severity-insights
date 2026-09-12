@@ -7,6 +7,7 @@ This is an academic Data Science project. I used exploratory data analysis, a Po
 - Cleaned and explored more than 12,000 road accident records.
 - Built an interactive Power BI dashboard to explore accident-severity patterns.
 - Compared Decision Tree, XGBoost, and Random Forest with different resampling methods. The cross-validation and held-out test results are in `reports/model_results.csv`.
+- Received First Runner-Up at the 12th National Conference on Science and Technology, Phranakhon Si Ayutthaya Rajabhat University.
 
 ## Project Layout
 
@@ -17,6 +18,7 @@ This is an academic Data Science project. I used exploratory data analysis, a Po
 - `src/model_training.py` and `src/models/` - Defines and evaluates the machine learning models.
 - `tests/` - Automated tests for preprocessing and feature engineering.
 - `reports/model_results.csv` - Cross-validation and held-out test results from the reproducible baseline.
+- `reports/xgboost_feature_importance.csv` - Gain-based importance scores from the selected XGBoost model.
 
 ## Setup
 
@@ -50,6 +52,14 @@ In the current reproducible baseline run, XGBoost without resampling had the hig
 This choice is also consistent with Muktar and Fono (2024), who compared XGBoost, CatBoost, Random Forest, and Gradient Boosting for traffic-accident severity prediction and reported XGBoost as their best-performing model. The datasets and evaluation settings are different, so this study is used as supporting context; the final choice for this project is based on this project's own cross-validation results.
 
 The modeling work is an academic experiment and is not presented as a deployed prediction system.
+
+## From analysis to dashboard
+
+The project connects analysis and communication in three steps. First, EDA finds patterns in road, vehicle, driver, and accident conditions. Second, the Power BI dashboard makes those patterns easier to explore. Third, the model comparison checks whether the same variables have useful predictive signal. The selected XGBoost model is then used to calculate gain-based feature importance, which helps identify the variables that contribute most to its predictions. Feature importance supports interpretation of the model; it does not prove that a variable causes accident severity.
+
+In this baseline, the most important variables were the number of vehicles involved (12.58% relative gain), light conditions (8.69%), and day of week (8.28%). The complete ranking is available in `reports/xgboost_feature_importance.csv`.
+
+![XGBoost feature importance](reports/figures/xgboost_feature_importance.png)
 
 Methodology details are available in [`docs/modeling-methodology.md`](docs/modeling-methodology.md).
 
