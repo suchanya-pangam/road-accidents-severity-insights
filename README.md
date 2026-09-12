@@ -1,13 +1,12 @@
 # Road Accident Severity Prediction and Dashboard
 
-This academic Data Science project combines exploratory data analysis, an interactive Power BI dashboard, and machine learning experiments to study factors associated with road accident severity. It examines patterns in road conditions, vehicle types, driver characteristics, and casualties, then compares classification models for severity prediction.
+This is an academic Data Science project. I used exploratory data analysis, a Power BI dashboard, and machine-learning experiments to study factors related to road accident severity. The project looks at road conditions, vehicle types, driver characteristics, and casualty information.
 
 ## Project Highlights
 
-- Cleaned and analyzed more than 12,000 road accident records.
-- Built an interactive Power BI dashboard for exploring accident-severity patterns and related factors.
-- Compared Decision Tree, XGBoost, and Random Forest models using Random Under-Sampling, Random Over-Sampling, and SMOTE.
-- The reproducible baseline compares Decision Tree, XGBoost, and Random Forest with several resampling methods. Detailed cross-validation and held-out test results are in `reports/model_results.csv`.
+- Cleaned and explored more than 12,000 road accident records.
+- Built an interactive Power BI dashboard to explore accident-severity patterns.
+- Compared Decision Tree, XGBoost, and Random Forest with different resampling methods. The cross-validation and held-out test results are in `reports/model_results.csv`.
 
 ## Project Layout
 
@@ -17,7 +16,7 @@ This academic Data Science project combines exploratory data analysis, an intera
 - `src/visualization.py` - Creates correlation and dashboard-supporting visualizations.
 - `src/model_training.py` and `src/models/` - Defines and evaluates the machine learning models.
 - `tests/` - Automated tests for preprocessing and feature engineering.
-- `reports/model_results.csv` - Template for recording model results.
+- `reports/model_results.csv` - Cross-validation and held-out test results from the reproducible baseline.
 
 ## Setup
 
@@ -46,7 +45,7 @@ The project uses the [Road Accidents Severity Prediction Kaggle notebook](https:
 
 The model experiments use a stratified 80:20 train-test split and evaluate Decision Tree, XGBoost, and Random Forest classifiers. Random Under-Sampling, Random Over-Sampling, and SMOTE are used to address class imbalance.
 
-On the current reproducible baseline run, XGBoost with SMOTE achieved the highest mean macro F1-score during 10-fold cross-validation. Its held-out test accuracy was 73.22% and held-out macro F1-score was 39.23%. The full comparison is recorded in `reports/model_results.csv`.
+In the current reproducible baseline run, XGBoost with SMOTE had the highest mean macro F1-score in 10-fold cross-validation. Its held-out test accuracy was 73.22% and its held-out macro F1-score was 39.23%. The full comparison is in `reports/model_results.csv`.
 
 The modeling work is an academic experiment and is not presented as a deployed prediction system.
 
@@ -57,3 +56,7 @@ Methodology details are available in [`docs/modeling-methodology.md`](docs/model
 Explore the interactive Power BI dashboard here: [Road Accident Severity Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMDRiOWEwNGUtYmNiNC00NzUzLWFkOWYtZDAxOTMzOTkwNjQ5IiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D).
 
 The dashboard supports interactive exploration of accident-severity patterns, road conditions, vehicle types, driver characteristics, and casualty information.
+
+## License
+
+The project code uses the MIT License. The road-accident dataset is not included in Git because it may have separate redistribution terms. Please check the dataset source and its terms before using it.
