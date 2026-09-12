@@ -69,6 +69,8 @@ Explore the interactive Power BI dashboard here: [Road Accident Severity Dashboa
 
 The dashboard supports interactive exploration of accident-severity patterns, road conditions, vehicle types, driver characteristics, and casualty information.
 
+If you prefer a quick static preview, you can also view or download the [dashboard PDF](reports/dashboard/Dashboard_Accident_Insight.pdf). The PDF is included as a non-interactive backup of the dashboard.
+
 ## Reference
 
 Muktar, B., & Fono, V. (2024). *Toward Safer Roads: Predicting the Severity of Traffic Accidents in Montreal Using Machine Learning*. Electronics, 13(15), 3036. https://doi.org/10.3390/electronics13153036
