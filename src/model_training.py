@@ -24,7 +24,7 @@ TARGET_COLUMN = "Accident_severity"
 
 
 def compare_models(data: pd.DataFrame) -> tuple[pd.DataFrame, object, object, tuple]:
-    """Compare notebook candidates with stratified 10-fold validation."""
+    """Compare notebook candidates and select the highest weighted F1-score."""
     features = data[SELECTED_FEATURES]
     target = data[TARGET_COLUMN]
     train_features, test_features, train_target, test_target = train_test_split(
@@ -59,7 +59,7 @@ def compare_models(data: pd.DataFrame) -> tuple[pd.DataFrame, object, object, tu
                     "Mean Macro F1-score": f1_score(validation_target, predictions, average="macro"),
                 })
             results.append({"Model": model_name, "Sampling method": sampler_name, **pd.DataFrame(scores).mean().to_dict()})
-    results_frame = pd.DataFrame(results).sort_values("Mean Macro F1-score", ascending=False).reset_index(drop=True)
+    results_frame = pd.DataFrame(results).sort_values("Mean Weighted F1-score", ascending=False).reset_index(drop=True)
     chosen_model = candidates[results_frame.loc[0, "Model"]]
     chosen_sampler = samplers[results_frame.loc[0, "Sampling method"]]
     return results_frame, chosen_model, chosen_sampler, (train_features, test_features, train_target, test_target)

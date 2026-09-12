@@ -45,7 +45,9 @@ The project uses the [Road Accidents Severity Prediction Kaggle notebook](https:
 
 The model experiments use a stratified 80:20 train-test split and evaluate Decision Tree, XGBoost, and Random Forest classifiers. Random Under-Sampling, Random Over-Sampling, and SMOTE are used to address class imbalance.
 
-In the current reproducible baseline run, XGBoost with SMOTE had the highest mean macro F1-score in 10-fold cross-validation. Its held-out test accuracy was 73.22% and its held-out macro F1-score was 39.23%. The full comparison is in `reports/model_results.csv`.
+In the current reproducible baseline run, XGBoost without resampling had the highest mean weighted F1-score in 10-fold cross-validation. It was selected because weighted F1-score reflects overall performance while considering class imbalance. Its mean accuracy was 84.39%, its mean weighted F1-score was 80.09%, and its mean macro F1-score was 40.00%. The full comparison is in `reports/model_results.csv`.
+
+This choice is also consistent with Muktar and Fono (2024), who compared XGBoost, CatBoost, Random Forest, and Gradient Boosting for traffic-accident severity prediction and reported XGBoost as their best-performing model. The datasets and evaluation settings are different, so this study is used as supporting context; the final choice for this project is based on this project's own cross-validation results.
 
 The modeling work is an academic experiment and is not presented as a deployed prediction system.
 
@@ -56,6 +58,10 @@ Methodology details are available in [`docs/modeling-methodology.md`](docs/model
 Explore the interactive Power BI dashboard here: [Road Accident Severity Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMDRiOWEwNGUtYmNiNC00NzUzLWFkOWYtZDAxOTMzOTkwNjQ5IiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D).
 
 The dashboard supports interactive exploration of accident-severity patterns, road conditions, vehicle types, driver characteristics, and casualty information.
+
+## Reference
+
+Muktar, B., & Fono, V. (2024). *Toward Safer Roads: Predicting the Severity of Traffic Accidents in Montreal Using Machine Learning*. Electronics, 13(15), 3036. https://doi.org/10.3390/electronics13153036
 
 ## License
 
