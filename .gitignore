@@ -30,3 +30,10 @@ docs/presentation-notes.md
 
 # Keep the public XGBoost feature-importance chart used in the README.
 !reports/figures/xgboost_feature_importance.png
+
+# Public dashboard preview
+!reports/figures/powerbi_dashboard.png
+
+# Local credentials
+.env
+.env.*

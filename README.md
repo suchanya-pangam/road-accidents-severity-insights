@@ -47,7 +47,7 @@ The project uses the [Road Accidents Severity Prediction Kaggle notebook](https:
 
 The model experiments use a stratified 80:20 train-test split and evaluate Decision Tree, XGBoost, and Random Forest classifiers. Random Under-Sampling, Random Over-Sampling, and SMOTE are used to address class imbalance.
 
-In the current reproducible baseline run, XGBoost without resampling had the highest mean weighted F1-score in 10-fold cross-validation. It was selected because weighted F1-score reflects overall performance while considering class imbalance. Its mean accuracy was 84.39%, its mean weighted F1-score was 80.09%, and its mean macro F1-score was 40.00%. The full comparison is in `reports/model_results.csv`.
+In the current reproducible baseline run, XGBoost without resampling had the highest mean weighted F1-score in stratified 10-fold cross-validation. It was selected because weighted F1-score reflects overall performance while considering class imbalance. Its mean accuracy was 84.39%, its mean weighted F1-score was 80.09%, and its mean macro F1-score was 40.00%. The full comparison is in `reports/model_results.csv`.
 
 This choice is also consistent with Muktar and Fono (2024), who compared XGBoost, CatBoost, Random Forest, and Gradient Boosting for traffic-accident severity prediction and reported XGBoost as their best-performing model. The datasets and evaluation settings are different, so this study is used as supporting context; the final choice for this project is based on this project's own cross-validation results.
 
@@ -66,6 +66,10 @@ In this baseline, the most important variables were the number of vehicles invol
 Methodology details are available in [`docs/modeling-methodology.md`](docs/modeling-methodology.md).
 
 ## Live Dashboard
+
+![Power BI road accident dashboard](reports/figures/powerbi_dashboard.png)
+
+Overview of road accident patterns and severity from the Power BI dashboard.
 
 Explore the interactive Power BI dashboard here: [Road Accident Severity Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMDRiOWEwNGUtYmNiNC00NzUzLWFkOWYtZDAxOTMzOTkwNjQ5IiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D).
 
